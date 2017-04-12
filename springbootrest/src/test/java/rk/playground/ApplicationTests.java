@@ -6,6 +6,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.codec.Base64;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -16,8 +21,14 @@ public class ApplicationTests {
 	private TestRestTemplate restTemplate;
 
 	@Test
-	public void testGreetingController() {
-		Greet greet = restTemplate.getForObject("/", Greet.class);
-		Assert.assertEquals("Hello From Spring Boot!!", greet.getMessage());
+	public void testGreetingControllerWithBasicSecurity() {
+        String plainCreds = "guest:guest123";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Basic " + new String(Base64.encode(plainCreds.getBytes())));
+        HttpEntity<String> request = new HttpEntity<>(headers);
+        ResponseEntity<Greet> response = restTemplate.exchange("/", HttpMethod.GET, request,
+                Greet.class);
+
+        Assert.assertEquals("Hello From Spring Boot!!", response.getBody().getMessage());
 	}
 }

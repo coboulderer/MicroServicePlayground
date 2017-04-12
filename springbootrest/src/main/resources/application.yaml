@@ -1,3 +1,8 @@
 bootrest:
   customproperty: hello from yaml!!!
+security:
+  user:
+    name: guest
+    password: guest123
+
 

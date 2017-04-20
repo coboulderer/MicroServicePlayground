@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation for Sender
+ * Implementation for Sender using RabbitMQ
  */
 @Service
 @Lazy

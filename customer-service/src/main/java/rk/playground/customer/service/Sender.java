@@ -1,7 +1,7 @@
 package rk.playground.customer.service;
 
 /**
- * Sends an email
+ * Sends a message to the messaging queue
  */
 public interface Sender {
 

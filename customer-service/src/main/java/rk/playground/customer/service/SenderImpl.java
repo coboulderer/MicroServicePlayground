@@ -14,8 +14,12 @@ import org.springframework.stereotype.Service;
 @Lazy
 public class SenderImpl implements Sender{
 
-    @Autowired
     private RabbitMessagingTemplate template;
+
+    @Autowired
+    public SenderImpl(RabbitMessagingTemplate template) {
+        this.template = template;
+    }
 
     @Bean
     Queue queue() {

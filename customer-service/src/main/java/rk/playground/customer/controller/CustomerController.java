@@ -15,8 +15,12 @@ import rk.playground.customer.service.CustomerRegisterService;
 @RestController
 public class CustomerController {
 
-    @Autowired
     private CustomerRegisterService customerRegisterService;
+
+    @Autowired
+    public CustomerController(CustomerRegisterService customerRegisterService) {
+        this.customerRegisterService = customerRegisterService;
+    }
 
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     Customer register(@RequestBody Customer customer) {

@@ -1,0 +1,13 @@
+endpoints:
+  actuator:
+    sensitive: false
+    enabled: true
+management:
+  security:
+    enabled: false
+  shell:
+    auth:
+      simple:
+        user:
+          name: admin
+          password: admin

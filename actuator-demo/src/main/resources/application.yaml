@@ -11,3 +11,8 @@ management:
         user:
           name: admin
           password: admin
+info:
+  app:
+    name: Boot Actuator
+    description: Actuator Demo
+    version: 1.0.0
